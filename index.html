@@ -528,10 +528,20 @@ const QUICK=['👋 Hi','🧑‍💻 Who is Sachin?','⚡ Skills','📁 Projects'
 const $=id=>document.getElementById(id),gb=$('gb'),msgs=$('gbMsgs'),inp=$('gbIn'),av=$('gbAv');
 let voice=true,greeted=false;
 function add(t,who){const d=document.createElement('div');d.className='m '+who;d.innerHTML=t;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d}
-function speak(html){if(!voice||!('speechSynthesis' in window))return;speechSynthesis.cancel();
- const t=html.replace(/<[^>]+>/g,'').replace(/[\u{1F300}-\u{1FAFF}\u2600-\u27BF]/gu,'');const u=new SpeechSynthesisUtterance(t);
+// Voice: ElevenLabs via Cloudflare Worker proxy (key stays server-side); falls back to browser voice
+const TTS_PROXY=''; // e.g. 'https://ghosty-voice.<your-subdomain>.workers.dev'
+let audio=null;const ttsCache={};
+function stopVoice(){if(audio){audio.pause();audio=null}if('speechSynthesis' in window)speechSynthesis.cancel();av.classList.remove('talk')}
+function browserSpeak(t){if(!('speechSynthesis' in window))return;const u=new SpeechSynthesisUtterance(t);
  const v=speechSynthesis.getVoices().find(v=>/en-(US|GB|IN)/.test(v.lang));if(v)u.voice=v;u.lang=v?v.lang:'en-US';u.pitch=1.4;u.rate=1.05;
  u.onstart=()=>av.classList.add('talk');u.onend=u.onerror=()=>av.classList.remove('talk');speechSynthesis.speak(u)}
+async function speak(html){if(!voice)return;stopVoice();
+ const t=html.replace(/<[^>]+>/g,'').replace(/[\u{1F300}-\u{1FAFF}\u2600-\u27BF]/gu,'').trim();if(!t)return;
+ if(!TTS_PROXY)return browserSpeak(t);
+ try{let url=ttsCache[t];if(!url){const r=await fetch(TTS_PROXY,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:t})});
+  if(!r.ok)throw 0;url=ttsCache[t]=URL.createObjectURL(await r.blob())}
+  if(!voice)return;audio=new Audio(url);audio.onplay=()=>av.classList.add('talk');audio.onended=audio.onpause=()=>av.classList.remove('talk');await audio.play()}
+ catch(e){browserSpeak(t)}}
 function reply(q){const s=q.toLowerCase();let best=null,score=0;
  const hit=k=>k.length<=4?new RegExp('(^|[^a-z])'+k+'([^a-z]|$)').test(s):s.includes(k);
  KB.forEach(e=>{const n=e.k.filter(hit).reduce((a,k)=>a+k.length,0);if(n>score){score=n;best=e}});
@@ -542,9 +552,9 @@ function botSay(e){const d=document.createElement('div');d.className='m bot dots
  },600+Math.min(e.a.length*8,900))}
 function ask(q){q=q.trim();if(!q)return;add(q.replace(/</g,'&lt;'),'me');inp.value='';botSay(reply(q))}
 function toggle(o){gb.classList.toggle('open',o);$('gbBubble').classList.add('hide');
- if(o&&!greeted){greeted=true;botSay({a:"Boo! 👻 I'm Ghosty, Sachin's assistant. Ask me anything about him!"})}if(o)setTimeout(()=>inp.focus(),300);else speechSynthesis&&speechSynthesis.cancel()}
+ if(o&&!greeted){greeted=true;botSay({a:"Boo! 👻 I'm Ghosty, Sachin's assistant. Ask me anything about him!"})}if(o)setTimeout(()=>inp.focus(),300);else stopVoice()}
 $('gbBtn').onclick=()=>toggle(!gb.classList.contains('open'));$('gbClose').onclick=()=>toggle(false);
-$('gbVoice').onclick=e=>{voice=!voice;e.target.textContent=voice?'🔊':'🔇';if(!voice)speechSynthesis.cancel()};
+$('gbVoice').onclick=e=>{voice=!voice;e.target.textContent=voice?'🔊':'🔇';if(!voice)stopVoice()};
 $('gbForm').onsubmit=e=>{e.preventDefault();ask(inp.value)};
 $('gbQuick').innerHTML=QUICK.map(q=>`<button>${q}</button>`).join('');
 $('gbQuick').querySelectorAll('button').forEach(b=>b.onclick=()=>ask(b.textContent.replace(/^\S+\s/,'')));
