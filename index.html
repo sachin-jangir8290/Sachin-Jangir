@@ -206,7 +206,11 @@ body::before{content:"";position:fixed;inset:0;z-index:-2;background:url(img/bg-
 header{background:rgba(243,243,241,.7)}
 .icard,.svc:not(.hot):not(.dk),.rev,.ach div,.post,.badges span{background:rgba(255,255,255,.82);backdrop-filter:blur(8px)}
 .dark,footer,.hs .pin,.loader{background:linear-gradient(rgba(8,8,9,.72),rgba(8,8,9,.85)),url(img/bg-dark.webp) center/cover!important}
-.stage{background:radial-gradient(ellipse at 70% 60%,rgba(255,40,10,.25),transparent 55%),linear-gradient(rgba(10,10,11,.68),rgba(10,10,11,.8)),url(img/bg-dark.webp) center/cover}
+.stage{background:radial-gradient(ellipse at 70% 60%,rgba(255,61,31,.18),transparent 55%),linear-gradient(rgba(255,255,255,.55),rgba(255,255,255,.7)),url(img/bg-light.webp) center/cover;border:1px solid var(--line);box-shadow:0 40px 80px -50px rgba(0,0,0,.35)}
+.stage .tagline{color:var(--ink);background:rgba(255,255,255,.7);border-color:var(--line)}
+.stage .scroll text:first-of-type{fill:var(--ink)}
+.me-img{filter:drop-shadow(0 20px 30px rgba(255,40,10,.35))}
+@keyframes meGlow{50%{filter:drop-shadow(0 20px 45px rgba(255,40,10,.6))}}
 .banner{background:linear-gradient(rgba(10,10,11,.6),rgba(10,10,11,.7)),url(img/bg-dark.webp) center/cover}
 .proj,.step:not(:nth-child(2n)),.cform input,.cform textarea,.cform select{background:rgba(18,18,20,.8);backdrop-filter:blur(6px)}
 
@@ -306,7 +310,7 @@ filter:drop-shadow(0 0 30px rgba(255,40,10,.55));animation:meIn 1.4s .4s cubic-b
     <canvas id="hero3d"></canvas>
     <img src="img/sachin.webp" alt="Sachin Jangir" class="me-img" id="meImg">
     <div class="tagline">Design × Code × Motion — turning ideas into immersive, high-performance products.</div>
-    <svg class="scroll" viewBox="0 0 100 100"><defs><path id="c" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><text fill="#fff" font-size="11" font-weight="600" letter-spacing="3"><textPath href="#c">SCROLL DOWN • SCROLL DOWN • </textPath></text><text x="50" y="56" fill="#ff3d1f" font-size="20" text-anchor="middle">↓</text></svg>
+    <svg class="scroll" viewBox="0 0 100 100"><defs><path id="c" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><text fill="#0d0d0d" font-size="11" font-weight="600" letter-spacing="3"><textPath href="#c">SCROLL DOWN • SCROLL DOWN • </textPath></text><text x="50" y="56" fill="#ff3d1f" font-size="20" text-anchor="middle">↓</text></svg>
   </div>
 </div></section>
 
