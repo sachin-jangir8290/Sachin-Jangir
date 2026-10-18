@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sachin Jangir — Portfolio</title>
+<link rel="icon" type="image/png" href="favicon.png">
 <meta name="description" content="Portfolio of Sachin Jangir — developer & creative technologist">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -193,6 +194,16 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:98;opa
 .cform textarea,.cform .full{grid-column:1/-1}.cform textarea{min-height:130px;resize:vertical}
 @media(max-width:600px){.cform{grid-template-columns:1fr}}
 .magnet{transition:transform .25s}
+
+.nlogo{width:42px;height:42px;object-fit:contain;transition:transform .5s}
+.logo:hover .nlogo{transform:rotate(-12deg) scale(1.15)}
+.orbit .core{width:200px;height:200px;margin:-100px;background:radial-gradient(circle,rgba(255,61,31,.35),transparent 70%);box-shadow:none;animation:bob 4s ease-in-out infinite}
+.orbit .core img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 20px 30px rgba(255,61,31,.45))}
+@keyframes bob{50%{transform:translateY(-14px) rotate(-4deg)}}
+.llogo{position:absolute;left:50%;top:50%;width:min(240px,50vw);transform:translate(-50%,-50%);animation:lb 1.6s ease-in-out infinite;filter:drop-shadow(0 0 40px rgba(255,61,31,.6))}
+@keyframes lb{50%{transform:translate(-50%,-56%) rotate(-5deg) scale(1.05)}}
+.flogo{display:flex;align-items:center;justify-content:center;gap:2vw}
+.flogo-img{width:clamp(70px,14vw,200px);animation:bob 4s ease-in-out infinite}
 /* motion */
 .r{opacity:0;transform:translateY(60px);transition:1s cubic-bezier(.2,.8,.2,1)}.r.in{opacity:1;transform:none}
 .cursor{position:fixed;width:14px;height:14px;border-radius:50%;background:var(--acc);pointer-events:none;z-index:99;mix-blend-mode:multiply;transform:translate(-50%,-50%);transition:width .25s,height .25s}
@@ -202,10 +213,10 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:98;opa
 </style>
 </head>
 <body>
-<div class="loader" id="loader"><i></i><span>Sachin Jangir — Portfolio</span><b id="lc">0</b></div><div class="progress"></div><div class="cursor"></div>
+<div class="loader" id="loader"><i></i><img src="logo.png" alt="" class="llogo"><span>Sachin Jangir — Portfolio</span><b id="lc">0</b></div><div class="progress"></div><div class="cursor"></div>
 <!-- Content: replace placeholder details with your LinkedIn info -->
 <header><nav class="wrap">
-  <a class="logo" href="#"><b>S</b>Sachin.</a>
+  <a class="logo" href="#"><img src="logo.png" alt="Sachin Jangir logo" class="nlogo">Sachin.</a>
   <div class="links"><a href="#about">About</a><a href="#services">Services</a><a href="#experience">Experience</a><a href="#work">Work</a><a href="#skills">Skills</a><a href="#reviews">Reviews</a><a href="#faq">FAQ</a></div>
   <a class="pill" href="#contact">Let's talk <i>→</i></a>
 </nav></header>
@@ -290,7 +301,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:98;opa
 
 
 <section id="skills"><div class="wrap skills">
-  <div class="orbit r" id="orbit"><div class="core">SJ</div></div>
+  <div class="orbit r" id="orbit"><div class="core"><img src="logo.png" alt="Sachin Jangir logo"></div></div>
   <div>
     <span class="label r">Skills</span>
     <h2 class="r" style="font-size:clamp(36px,5vw,68px);margin:16px 0 36px">My <span class="acc">tech stack</span></h2>
@@ -348,7 +359,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:98;opa
 <button class="pill full magnet" style="justify-content:center;padding:18px">Send message <i>→</i></button></form>
 <div class="fcta r" style="margin-top:0"><a href="mailto:sachinjangir8082@gmail.com" style="color:#9a9a9a">or email directly: <b style="color:#fff">sachinjangir8082@gmail.com</b></a></div>
   <div class="fgrid"><span>© <span id="y"></span> Sachin Jangir</span><div><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/sachin-jangir8290" target="_blank" rel="noopener">GitHub</a><a href="#">Back to top ↑</a></div></div>
-  <div class="flogo">SACHIN</div>
+  <div class="flogo"><img src="logo.png" alt="" class="flogo-img">SACHIN</div>
 </div></footer>
 
 <script>
