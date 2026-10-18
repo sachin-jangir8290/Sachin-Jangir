@@ -231,6 +231,46 @@ background:rgba(20,20,22,.7);border:1px solid rgba(255,255,255,.14);backdrop-fil
 .orbit .spark{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;opacity:.6;animation:tw 3s ease-in-out infinite}
 @keyframes tw{50%{opacity:.1;transform:scale(.4)}}
 .orbit .cap{display:none;position:absolute;left:0;right:0;bottom:16px;text-align:center;color:#bbb;font-size:12px;letter-spacing:.2em;text-transform:uppercase;z-index:6}
+
+/* ghost chatbot */
+.gb-btn{position:fixed;right:20px;bottom:20px;z-index:120;width:84px;height:84px;border:0;background:none;cursor:pointer;animation:bob 3.5s ease-in-out infinite}
+.gb-btn img{width:100%;filter:drop-shadow(0 12px 20px rgba(255,61,31,.5));transition:transform .3s}
+.gb-btn:hover img{transform:scale(1.1) rotate(-8deg)}
+.gb-bubble{position:fixed;right:110px;bottom:52px;z-index:120;background:#fff;color:var(--ink);padding:10px 14px;border-radius:16px 16px 4px 16px;font-size:14px;font-weight:600;box-shadow:0 10px 30px -10px rgba(0,0,0,.3);animation:pop .5s cubic-bezier(.2,1.6,.4,1) both;max-width:200px}
+.gb-bubble.hide{display:none}
+@keyframes pop{from{transform:scale(0);opacity:0}}
+.gb{position:fixed;right:20px;bottom:116px;z-index:121;width:min(380px,calc(100vw - 32px));height:min(560px,calc(100vh - 140px));display:flex;flex-direction:column;border-radius:26px;overflow:hidden;
+background:linear-gradient(rgba(10,10,11,.88),rgba(10,10,11,.94)),url(img/bg-dark.webp) center/cover;color:#fff;border:1px solid rgba(255,255,255,.12);box-shadow:0 40px 80px -20px rgba(0,0,0,.6);
+transform-origin:bottom right;transform:scale(.4) translateY(40px);opacity:0;pointer-events:none;transition:.45s cubic-bezier(.2,1.2,.3,1)}
+.gb.open{transform:none;opacity:1;pointer-events:auto}
+.gb-head{display:flex;align-items:center;gap:12px;padding:14px 16px;background:linear-gradient(90deg,rgba(255,61,31,.35),transparent);border-bottom:1px solid rgba(255,255,255,.08)}
+.gb-av{width:48px;height:48px;position:relative;flex:none}
+.gb-av img{width:100%;height:100%;object-fit:contain}
+.gb-av.talk img{animation:talk .28s ease-in-out infinite alternate}
+@keyframes talk{to{transform:scale(1.08,.94) translateY(2px) rotate(-3deg)}}
+.gb-head b{display:block;font-family:Archivo}.gb-head small{color:#9be29b;font-size:12px}
+.gb-head small::before{content:"● "}
+.gb-head .x{margin-left:auto;display:flex;gap:6px}
+.gb-head button{all:unset;cursor:pointer;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);font-size:15px}
+.gb-head button:hover{background:var(--acc)}
+.gb-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+.m{max-width:85%;padding:10px 14px;border-radius:18px;font-size:14px;line-height:1.5;animation:pop .35s ease both;white-space:pre-line}
+.m.bot{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-bottom-left-radius:4px;align-self:flex-start}
+.m.me{background:var(--acc);border-bottom-right-radius:4px;align-self:flex-end}
+.m a{color:var(--acc2);text-decoration:underline}
+.dots{display:flex;gap:4px;padding:14px}.dots i{width:7px;height:7px;border-radius:50%;background:#bbb;animation:dt 1s infinite}.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes dt{50%{transform:translateY(-5px);opacity:.4}}
+.gb-quick{display:flex;gap:6px;overflow-x:auto;padding:0 12px 10px;scrollbar-width:none}
+.gb-quick button{all:unset;cursor:pointer;flex:none;font-size:12px;padding:7px 12px;border-radius:99px;border:1px solid rgba(255,255,255,.18)}
+.gb-quick button:hover{background:var(--acc);border-color:var(--acc)}
+.gb-form{display:flex;gap:8px;padding:12px;border-top:1px solid rgba(255,255,255,.08)}
+.gb-form input{flex:1;min-width:0;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:#fff;border-radius:99px;padding:12px 16px;font:inherit;font-size:14px;outline:none}
+.gb-form input:focus{border-color:var(--acc)}
+.gb-form button{all:unset;cursor:pointer;width:44px;height:44px;flex:none;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08)}
+.gb-form button.send{background:var(--acc)}
+.gb-form button.rec{background:#22c55e;animation:pulse2 1s infinite}
+@keyframes pulse2{50%{box-shadow:0 0 0 8px rgba(34,197,94,.25)}}
+@media(max-width:520px){.gb-btn{width:68px;height:68px}.gb{bottom:96px;right:16px}.gb-bubble{right:92px;bottom:40px}}
 /* motion */
 .r{opacity:0;transform:translateY(60px);transition:1s cubic-bezier(.2,.8,.2,1)}.r.in{opacity:1;transform:none}
 .cursor{position:fixed;width:14px;height:14px;border-radius:50%;background:var(--acc);pointer-events:none;z-index:99;mix-blend-mode:multiply;transform:translate(-50%,-50%);transition:width .25s,height .25s}
@@ -452,6 +492,68 @@ b.addEventListener('pointerleave',()=>b.style.transform='')});
 // contact form -> mailto
 document.getElementById('cform').onsubmit=e=>{e.preventDefault();const f=e.target;
 location.href=`mailto:sachinjangir8082@gmail.com?subject=${encodeURIComponent(f.t.value+' — '+f.n.value)}&body=${encodeURIComponent(f.m.value+'\n\nFrom: '+f.n.value+' ('+f.e.value+')')}`};
+</script>
+
+<!-- Ghost chatbot -->
+<div class="gb-bubble" id="gbBubble">Boo! 👻 Mujhse Sachin ke baare me poochho</div>
+<button class="gb-btn" id="gbBtn" aria-label="Open chat"><img src="logo.png" alt=""></button>
+<div class="gb" id="gb" role="dialog" aria-label="Ghost chatbot">
+  <div class="gb-head"><div class="gb-av" id="gbAv"><img src="logo.png" alt=""></div><div><b>Ghosty</b><small>Online · Sachin's assistant</small></div>
+    <div class="x"><button id="gbVoice" title="Voice on/off">🔊</button><button id="gbClose" title="Close">✕</button></div></div>
+  <div class="gb-msgs" id="gbMsgs"></div>
+  <div class="gb-quick" id="gbQuick"></div>
+  <form class="gb-form" id="gbForm"><input id="gbIn" placeholder="Kuch bhi poochho..." autocomplete="off"><button type="button" id="gbMic" title="Speak">🎤</button><button class="send" title="Send">➤</button></form>
+</div>
+<script>
+(()=>{
+// Knowledge base — update with your real details
+const KB=[
+ {k:['hi','hello','hey','namaste','hii','helo','kaise','yo'],a:"Hey there! 👻 Main Ghosty hoon, Sachin ka friendly assistant. Aap mujhse unke skills, projects, experience ya contact ke baare me pooch sakte ho!"},
+ {k:['who','kaun','about','sachin','introduce','intro','bare'],a:"Sachin Jangir ek creative developer hain jo fast, beautiful aur interactive websites banate hain — code, 3D aur motion ke saath. 🚀"},
+ {k:['skill','tech','stack','language','technology','know','aata'],a:"Sachin ke skills: HTML, CSS, JavaScript, React, Three.js / WebGL, Node.js, Tailwind, Python, Git, Figma aur UI/UX design. ⚡",go:'#skills'},
+ {k:['project','work','portfolio','kaam','built','banaya'],a:"Sachin ke recent projects 'Work' section me hain — web apps, 3D websites, dashboards aur branding. Chalo wahan le chalta hoon! 👀",go:'#work'},
+ {k:['experience','job','company','intern','career','naukri'],a:"Sachin ne frontend development, internship aur freelance projects me kaam kiya hai. Poori timeline Experience section me hai. 📈",go:'#experience'},
+ {k:['education','study','degree','college','university','padhai'],a:"Sachin ne Bachelor's degree complete ki hai — details Experience section ki timeline me hain. 🎓",go:'#experience'},
+ {k:['service','offer','provide','help','kya kar'],a:"Sachin offer karte hain: 🌐 Web Development, 🎨 3D & Motion websites, aur ✏️ UI/UX Design.",go:'#services'},
+ {k:['hire','contact','email','reach','mail','baat','connect','number'],a:"Sachin se baat karne ke liye email karo: <a href='mailto:sachinjangir8082@gmail.com'>sachinjangir8082@gmail.com</a> ✉️ ya neeche contact form bharo!",go:'#contact'},
+ {k:['available','freelance','full-time','fulltime','open'],a:"Haan! Sachin full-time roles, freelance projects aur collaborations ke liye available hain. ✅"},
+ {k:['price','cost','rate','charge','budget','paisa','kitna'],a:"Price project ke scope pe depend karta hai. Apni requirement email karo, Sachin jaldi quote bhejenge. 💬"},
+ {k:['time','long','duration','kitne din','deadline'],a:"Ek landing page aam taur pe 1–2 hafte me ban jaata hai; bade projects scope pe depend karte hain. ⏱️"},
+ {k:['linkedin','github','social'],a:"Sachin ka GitHub: <a href='https://github.com/sachin-jangir8290' target='_blank'>github.com/sachin-jangir8290</a> 🐙"},
+ {k:['ghost','tum','your name','tumhara naam','who are you','bot','ghosty'],a:"Main Ghosty hoon 👻 — Sachin ke logo wala friendly bhoot! Darr mat, main sirf help karta hoon. 😄"},
+ {k:['thank','thanks','shukriya','dhanyavad','great','nice','awesome','cool'],a:"Aapka swagat hai! 😊 Aur kuch poochna ho to bindaas poochho."},
+ {k:['bye','alvida','see you','goodbye'],a:"Bye bye! 👋 Phir milte hain — boo! 👻"},
+];
+const QUICK=['👋 Hi','🧑‍💻 Sachin kaun hai?','⚡ Skills','📁 Projects','📈 Experience','✉️ Contact','💼 Hire'];
+const $=id=>document.getElementById(id),gb=$('gb'),msgs=$('gbMsgs'),inp=$('gbIn'),av=$('gbAv');
+let voice=true,greeted=false;
+function add(t,who){const d=document.createElement('div');d.className='m '+who;d.innerHTML=t;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d}
+function speak(html){if(!voice||!('speechSynthesis' in window))return;speechSynthesis.cancel();
+ const t=html.replace(/<[^>]+>/g,'').replace(/[\u{1F300}-\u{1FAFF}\u2600-\u27BF]/gu,'');const u=new SpeechSynthesisUtterance(t);
+ const v=speechSynthesis.getVoices().find(v=>/hi-IN|en-IN/.test(v.lang));if(v)u.voice=v;u.lang=v?v.lang:'en-IN';u.pitch=1.4;u.rate=1.05;
+ u.onstart=()=>av.classList.add('talk');u.onend=u.onerror=()=>av.classList.remove('talk');speechSynthesis.speak(u)}
+function reply(q){const s=q.toLowerCase();let best=null,score=0;
+ const hit=k=>k.length<=4?new RegExp('(^|[^a-z])'+k+'([^a-z]|$)').test(s):s.includes(k);
+ KB.forEach(e=>{const n=e.k.filter(hit).reduce((a,k)=>a+k.length,0);if(n>score){score=n;best=e}});
+ return best||{a:"Hmm 🤔 ye mujhe pakka nahi pata. Aap Sachin ke skills, projects, experience ya contact ke baare me pooch sakte ho — ya seedha email karo: <a href='mailto:sachinjangir8082@gmail.com'>sachinjangir8082@gmail.com</a>"}}
+function botSay(e){const d=document.createElement('div');d.className='m bot dots';d.innerHTML='<i></i><i></i><i></i>';msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;av.classList.add('talk');
+ setTimeout(()=>{d.remove();av.classList.remove('talk');add(e.a,'bot');speak(e.a);
+  if(e.go){const b=document.createElement('div');b.className='gb-quick';b.style.padding='0';b.innerHTML=`<button>Le chalo ➜</button>`;b.onclick=()=>{document.querySelector(e.go).scrollIntoView({behavior:'smooth'});if(innerWidth<600)toggle(false)};msgs.appendChild(b);msgs.scrollTop=msgs.scrollHeight}
+ },600+Math.min(e.a.length*8,900))}
+function ask(q){q=q.trim();if(!q)return;add(q.replace(/</g,'&lt;'),'me');inp.value='';botSay(reply(q))}
+function toggle(o){gb.classList.toggle('open',o);$('gbBubble').classList.add('hide');
+ if(o&&!greeted){greeted=true;botSay({a:"Boo! 👻 Main Ghosty hoon — Sachin ka assistant. Unke baare me kuch bhi poochho!"})}if(o)setTimeout(()=>inp.focus(),300);else speechSynthesis&&speechSynthesis.cancel()}
+$('gbBtn').onclick=()=>toggle(!gb.classList.contains('open'));$('gbClose').onclick=()=>toggle(false);
+$('gbVoice').onclick=e=>{voice=!voice;e.target.textContent=voice?'🔊':'🔇';if(!voice)speechSynthesis.cancel()};
+$('gbForm').onsubmit=e=>{e.preventDefault();ask(inp.value)};
+$('gbQuick').innerHTML=QUICK.map(q=>`<button>${q}</button>`).join('');
+$('gbQuick').querySelectorAll('button').forEach(b=>b.onclick=()=>ask(b.textContent.replace(/^\S+\s/,'')));
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition,mic=$('gbMic');
+if(!SR)mic.style.display='none';else{const r=new SR();r.lang='en-IN';r.interimResults=false;
+ r.onresult=e=>ask(e.results[0][0].transcript);r.onend=()=>mic.classList.remove('rec');
+ mic.onclick=()=>{if(mic.classList.contains('rec'))return r.stop();mic.classList.add('rec');r.start()}}
+setTimeout(()=>$('gbBubble').classList.add('hide'),12000);
+})();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
