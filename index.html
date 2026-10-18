@@ -495,61 +495,61 @@ location.href=`mailto:sachinjangir8082@gmail.com?subject=${encodeURIComponent(f.
 </script>
 
 <!-- Ghost chatbot -->
-<div class="gb-bubble" id="gbBubble">Boo! 👻 Mujhse Sachin ke baare me poochho</div>
+<div class="gb-bubble" id="gbBubble">Boo! 👻 Ask me about Sachin</div>
 <button class="gb-btn" id="gbBtn" aria-label="Open chat"><img src="logo.png" alt=""></button>
 <div class="gb" id="gb" role="dialog" aria-label="Ghost chatbot">
   <div class="gb-head"><div class="gb-av" id="gbAv"><img src="logo.png" alt=""></div><div><b>Ghosty</b><small>Online · Sachin's assistant</small></div>
     <div class="x"><button id="gbVoice" title="Voice on/off">🔊</button><button id="gbClose" title="Close">✕</button></div></div>
   <div class="gb-msgs" id="gbMsgs"></div>
   <div class="gb-quick" id="gbQuick"></div>
-  <form class="gb-form" id="gbForm"><input id="gbIn" placeholder="Kuch bhi poochho..." autocomplete="off"><button type="button" id="gbMic" title="Speak">🎤</button><button class="send" title="Send">➤</button></form>
+  <form class="gb-form" id="gbForm"><input id="gbIn" placeholder="Ask me anything..." autocomplete="off"><button type="button" id="gbMic" title="Speak">🎤</button><button class="send" title="Send">➤</button></form>
 </div>
 <script>
 (()=>{
 // Knowledge base — update with your real details
 const KB=[
- {k:['hi','hello','hey','namaste','hii','helo','kaise','yo'],a:"Hey there! 👻 Main Ghosty hoon, Sachin ka friendly assistant. Aap mujhse unke skills, projects, experience ya contact ke baare me pooch sakte ho!"},
- {k:['who','kaun','about','sachin','introduce','intro','bare'],a:"Sachin Jangir ek creative developer hain jo fast, beautiful aur interactive websites banate hain — code, 3D aur motion ke saath. 🚀"},
- {k:['skill','tech','stack','language','technology','know','aata'],a:"Sachin ke skills: HTML, CSS, JavaScript, React, Three.js / WebGL, Node.js, Tailwind, Python, Git, Figma aur UI/UX design. ⚡",go:'#skills'},
- {k:['project','work','portfolio','kaam','built','banaya'],a:"Sachin ke recent projects 'Work' section me hain — web apps, 3D websites, dashboards aur branding. Chalo wahan le chalta hoon! 👀",go:'#work'},
- {k:['experience','job','company','intern','career','naukri'],a:"Sachin ne frontend development, internship aur freelance projects me kaam kiya hai. Poori timeline Experience section me hai. 📈",go:'#experience'},
- {k:['education','study','degree','college','university','padhai'],a:"Sachin ne Bachelor's degree complete ki hai — details Experience section ki timeline me hain. 🎓",go:'#experience'},
- {k:['service','offer','provide','help','kya kar'],a:"Sachin offer karte hain: 🌐 Web Development, 🎨 3D & Motion websites, aur ✏️ UI/UX Design.",go:'#services'},
- {k:['hire','contact','email','reach','mail','baat','connect','number'],a:"Sachin se baat karne ke liye email karo: <a href='mailto:sachinjangir8082@gmail.com'>sachinjangir8082@gmail.com</a> ✉️ ya neeche contact form bharo!",go:'#contact'},
- {k:['available','freelance','full-time','fulltime','open'],a:"Haan! Sachin full-time roles, freelance projects aur collaborations ke liye available hain. ✅"},
- {k:['price','cost','rate','charge','budget','paisa','kitna'],a:"Price project ke scope pe depend karta hai. Apni requirement email karo, Sachin jaldi quote bhejenge. 💬"},
- {k:['time','long','duration','kitne din','deadline'],a:"Ek landing page aam taur pe 1–2 hafte me ban jaata hai; bade projects scope pe depend karte hain. ⏱️"},
- {k:['linkedin','github','social'],a:"Sachin ka GitHub: <a href='https://github.com/sachin-jangir8290' target='_blank'>github.com/sachin-jangir8290</a> 🐙"},
- {k:['ghost','tum','your name','tumhara naam','who are you','bot','ghosty'],a:"Main Ghosty hoon 👻 — Sachin ke logo wala friendly bhoot! Darr mat, main sirf help karta hoon. 😄"},
- {k:['thank','thanks','shukriya','dhanyavad','great','nice','awesome','cool'],a:"Aapka swagat hai! 😊 Aur kuch poochna ho to bindaas poochho."},
- {k:['bye','alvida','see you','goodbye'],a:"Bye bye! 👋 Phir milte hain — boo! 👻"},
+ {k:['hi','hello','hey','namaste','hii','helo','yo','good morning','good evening'],a:"Hey there! 👻 I'm Ghosty, Sachin's friendly assistant. Ask me about his skills, projects, experience or how to get in touch!"},
+ {k:['who','about','sachin','introduce','intro','yourself'],a:"Sachin Jangir is a creative developer who builds fast, beautiful and interactive websites using code, 3D and motion. 🚀"},
+ {k:['skill','tech','stack','language','technology','know','tools'],a:"Sachin's skills: HTML, CSS, JavaScript, React, Three.js / WebGL, Node.js, Tailwind, Python, Git, Figma and UI/UX design. ⚡",go:'#skills'},
+ {k:['project','work','portfolio','built','made','case study'],a:"Sachin's recent projects are in the Work section: web apps, 3D websites, dashboards and branding. Let me take you there! 👀",go:'#work'},
+ {k:['experience','job','company','intern','career','worked'],a:"Sachin has experience in frontend development, internships and freelance projects. The full timeline is in the Experience section. 📈",go:'#experience'},
+ {k:['education','study','degree','college','university','school'],a:"Sachin holds a Bachelor's degree. You'll find the details in the Experience timeline. 🎓",go:'#experience'},
+ {k:['service','offer','provide','help','what can'],a:"Sachin offers: 🌐 Web Development, 🎨 3D & Motion websites and ✏️ UI/UX Design.",go:'#services'},
+ {k:['hire','contact','email','reach','mail','talk','connect','phone','number'],a:"You can email Sachin at <a href='mailto:sachinjangir8082@gmail.com'>sachinjangir8082@gmail.com</a> ✉️ or fill in the contact form below!",go:'#contact'},
+ {k:['available','freelance','full-time','fulltime','open to'],a:"Yes! Sachin is open to full-time roles, freelance projects and collaborations. ✅"},
+ {k:['price','cost','rate','charge','budget','pricing','how much'],a:"Pricing depends on the project scope. Email your requirements and Sachin will send a quote quickly. 💬"},
+ {k:['time','long','duration','deadline','how fast'],a:"A landing page usually takes 1–2 weeks; bigger projects depend on scope. ⏱️"},
+ {k:['linkedin','github','social'],a:"Sachin's GitHub: <a href='https://github.com/sachin-jangir8290' target='_blank'>github.com/sachin-jangir8290</a> 🐙"},
+ {k:['ghost','your name','who are you','bot','ghosty'],a:"I'm Ghosty 👻, the friendly ghost from Sachin's logo! Don't be scared, I'm only here to help. 😄"},
+ {k:['thank','thanks','great','nice','awesome','cool','amazing'],a:"You're welcome! 😊 Feel free to ask anything else."},
+ {k:['bye','see you','goodbye','later'],a:"Bye bye! 👋 See you soon. Boo! 👻"},
 ];
-const QUICK=['👋 Hi','🧑‍💻 Sachin kaun hai?','⚡ Skills','📁 Projects','📈 Experience','✉️ Contact','💼 Hire'];
+const QUICK=['👋 Hi','🧑‍💻 Who is Sachin?','⚡ Skills','📁 Projects','📈 Experience','✉️ Contact','💼 Hire'];
 const $=id=>document.getElementById(id),gb=$('gb'),msgs=$('gbMsgs'),inp=$('gbIn'),av=$('gbAv');
 let voice=true,greeted=false;
 function add(t,who){const d=document.createElement('div');d.className='m '+who;d.innerHTML=t;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d}
 function speak(html){if(!voice||!('speechSynthesis' in window))return;speechSynthesis.cancel();
  const t=html.replace(/<[^>]+>/g,'').replace(/[\u{1F300}-\u{1FAFF}\u2600-\u27BF]/gu,'');const u=new SpeechSynthesisUtterance(t);
- const v=speechSynthesis.getVoices().find(v=>/hi-IN|en-IN/.test(v.lang));if(v)u.voice=v;u.lang=v?v.lang:'en-IN';u.pitch=1.4;u.rate=1.05;
+ const v=speechSynthesis.getVoices().find(v=>/en-(US|GB|IN)/.test(v.lang));if(v)u.voice=v;u.lang=v?v.lang:'en-US';u.pitch=1.4;u.rate=1.05;
  u.onstart=()=>av.classList.add('talk');u.onend=u.onerror=()=>av.classList.remove('talk');speechSynthesis.speak(u)}
 function reply(q){const s=q.toLowerCase();let best=null,score=0;
  const hit=k=>k.length<=4?new RegExp('(^|[^a-z])'+k+'([^a-z]|$)').test(s):s.includes(k);
  KB.forEach(e=>{const n=e.k.filter(hit).reduce((a,k)=>a+k.length,0);if(n>score){score=n;best=e}});
- return best||{a:"Hmm 🤔 ye mujhe pakka nahi pata. Aap Sachin ke skills, projects, experience ya contact ke baare me pooch sakte ho — ya seedha email karo: <a href='mailto:sachinjangir8082@gmail.com'>sachinjangir8082@gmail.com</a>"}}
+ return best||{a:"Hmm 🤔 I'm not sure about that one. You can ask me about Sachin's skills, projects, experience or contact, or email him directly: <a href='mailto:sachinjangir8082@gmail.com'>sachinjangir8082@gmail.com</a>"}}
 function botSay(e){const d=document.createElement('div');d.className='m bot dots';d.innerHTML='<i></i><i></i><i></i>';msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;av.classList.add('talk');
  setTimeout(()=>{d.remove();av.classList.remove('talk');add(e.a,'bot');speak(e.a);
-  if(e.go){const b=document.createElement('div');b.className='gb-quick';b.style.padding='0';b.innerHTML=`<button>Le chalo ➜</button>`;b.onclick=()=>{document.querySelector(e.go).scrollIntoView({behavior:'smooth'});if(innerWidth<600)toggle(false)};msgs.appendChild(b);msgs.scrollTop=msgs.scrollHeight}
+  if(e.go){const b=document.createElement('div');b.className='gb-quick';b.style.padding='0';b.innerHTML=`<button>Take me there ➜</button>`;b.onclick=()=>{document.querySelector(e.go).scrollIntoView({behavior:'smooth'});if(innerWidth<600)toggle(false)};msgs.appendChild(b);msgs.scrollTop=msgs.scrollHeight}
  },600+Math.min(e.a.length*8,900))}
 function ask(q){q=q.trim();if(!q)return;add(q.replace(/</g,'&lt;'),'me');inp.value='';botSay(reply(q))}
 function toggle(o){gb.classList.toggle('open',o);$('gbBubble').classList.add('hide');
- if(o&&!greeted){greeted=true;botSay({a:"Boo! 👻 Main Ghosty hoon — Sachin ka assistant. Unke baare me kuch bhi poochho!"})}if(o)setTimeout(()=>inp.focus(),300);else speechSynthesis&&speechSynthesis.cancel()}
+ if(o&&!greeted){greeted=true;botSay({a:"Boo! 👻 I'm Ghosty, Sachin's assistant. Ask me anything about him!"})}if(o)setTimeout(()=>inp.focus(),300);else speechSynthesis&&speechSynthesis.cancel()}
 $('gbBtn').onclick=()=>toggle(!gb.classList.contains('open'));$('gbClose').onclick=()=>toggle(false);
 $('gbVoice').onclick=e=>{voice=!voice;e.target.textContent=voice?'🔊':'🔇';if(!voice)speechSynthesis.cancel()};
 $('gbForm').onsubmit=e=>{e.preventDefault();ask(inp.value)};
 $('gbQuick').innerHTML=QUICK.map(q=>`<button>${q}</button>`).join('');
 $('gbQuick').querySelectorAll('button').forEach(b=>b.onclick=()=>ask(b.textContent.replace(/^\S+\s/,'')));
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition,mic=$('gbMic');
-if(!SR)mic.style.display='none';else{const r=new SR();r.lang='en-IN';r.interimResults=false;
+if(!SR)mic.style.display='none';else{const r=new SR();r.lang='en-US';r.interimResults=false;
  r.onresult=e=>ask(e.results[0][0].transcript);r.onend=()=>mic.classList.remove('rec');
  mic.onclick=()=>{if(mic.classList.contains('rec'))return r.stop();mic.classList.add('rec');r.start()}}
 setTimeout(()=>$('gbBubble').classList.add('hide'),12000);
