@@ -1,7 +1,7 @@
 // Cloudflare Worker: proxies Ghosty's text to ElevenLabs TTS so the API key stays secret.
 // Setup: set secret ELEVENLABS_API_KEY (wrangler secret put ELEVENLABS_API_KEY or dashboard → Settings → Variables).
 const ALLOWED_ORIGINS = ['https://sachin-jangir8290.github.io'];
-const VOICE_ID = 'EXAVITQu4vr4xnSDxMaL'; // change to any ElevenLabs voice ID you like
+const VOICE_ID = 'TX3LPaxmHKxFdv7VOQHJ'; // Liam (male) // change to any ElevenLabs voice ID you like
 const MODEL_ID = 'eleven_flash_v2_5';
 const MAX_CHARS = 400;
 

@@ -531,14 +531,14 @@ function add(t,who){const d=document.createElement('div');d.className='m '+who;d
 // Voice: ElevenLabs via Cloudflare Worker proxy (key stays server-side); falls back to browser voice
 const TTS_PROXY=''; // optional: Cloudflare Worker URL (see worker/README.md) — used instead of the key below when set
 const ELEVEN_KEY='sk_4f15ef082c22bc0ef688c75158423f58d2161badace86321'; // public by owner's choice; rotate if abused
-const ELEVEN_VOICE='EXAVITQu4vr4xnSDxMaL',ELEVEN_MODEL='eleven_flash_v2_5';
+const ELEVEN_VOICE='TX3LPaxmHKxFdv7VOQHJ',ELEVEN_MODEL='eleven_flash_v2_5';
 let actx=null,src=null,ttsErrShown=false;const ttsCache={};
 // create/resume an AudioContext on the first user gesture so mobile browsers allow playback after the async fetch
 function unlockAudio(){try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();actx.resume()}catch(_){}}
 ['pointerdown','keydown','touchstart'].forEach(ev=>addEventListener(ev,unlockAudio,{capture:true,passive:true}));
 function stopVoice(){if(src){try{src.onended=null;src.stop()}catch(_){}src=null}if('speechSynthesis' in window)speechSynthesis.cancel();av.classList.remove('talk')}
 function browserSpeak(t){if(!('speechSynthesis' in window))return;const u=new SpeechSynthesisUtterance(t);
- const v=speechSynthesis.getVoices().find(v=>/en-(US|GB|IN)/.test(v.lang));if(v)u.voice=v;u.lang=v?v.lang:'en-US';u.pitch=1.4;u.rate=1.05;
+ const vs=speechSynthesis.getVoices().filter(v=>/^en/.test(v.lang)),v=vs.find(v=>/male|david|daniel|alex|fred|guy|mark|james|google uk english male/i.test(v.name)&&!/female/i.test(v.name))||vs[0];if(v)u.voice=v;u.lang=v?v.lang:'en-US';u.pitch=.9;u.rate=1;
  u.onstart=()=>av.classList.add('talk');u.onend=u.onerror=()=>av.classList.remove('talk');speechSynthesis.speak(u)}
 async function speak(html){if(!voice)return;stopVoice();
  const t=html.replace(/<[^>]+>/g,'').replace(/[\u{1F300}-\u{1FAFF}\u2600-\u27BF]/gu,'').trim();if(!t)return;
