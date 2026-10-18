@@ -206,7 +206,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-2;background:url(img/bg-
 header{background:rgba(243,243,241,.7)}
 .icard,.svc:not(.hot):not(.dk),.rev,.ach div,.post,.badges span{background:rgba(255,255,255,.82);backdrop-filter:blur(8px)}
 .dark,footer,.hs .pin,.loader{background:linear-gradient(rgba(8,8,9,.72),rgba(8,8,9,.85)),url(img/bg-dark.webp) center/cover!important}
-.stage{background:linear-gradient(rgba(10,10,11,.45),rgba(10,10,11,.6)),url(img/bg-dark.webp) center/cover}
+.stage{background:radial-gradient(ellipse at 70% 60%,rgba(255,40,10,.25),transparent 55%),linear-gradient(rgba(10,10,11,.68),rgba(10,10,11,.8)),url(img/bg-dark.webp) center/cover}
 .banner{background:linear-gradient(rgba(10,10,11,.6),rgba(10,10,11,.7)),url(img/bg-dark.webp) center/cover}
 .proj,.step:not(:nth-child(2n)),.cform input,.cform textarea,.cform select{background:rgba(18,18,20,.8);backdrop-filter:blur(6px)}
 
@@ -271,6 +271,14 @@ transform-origin:bottom right;transform:scale(.4) translateY(40px);opacity:0;poi
 .gb-form button.rec{background:#22c55e;animation:pulse2 1s infinite}
 @keyframes pulse2{50%{box-shadow:0 0 0 8px rgba(34,197,94,.25)}}
 @media(max-width:520px){.gb-btn{width:68px;height:68px}.gb{bottom:96px;right:16px}.gb-bubble{right:92px;bottom:40px}}
+
+/* hero portrait */
+.me-img{position:absolute;right:4%;bottom:0;height:96%;max-width:60%;object-fit:contain;object-position:bottom;z-index:2;pointer-events:none;
+filter:drop-shadow(0 0 30px rgba(255,40,10,.55));animation:meIn 1.4s .4s cubic-bezier(.2,.8,.2,1) both,meGlow 4s ease-in-out infinite;transition:transform .2s ease-out}
+@keyframes meIn{from{opacity:0;transform:translateY(60px) scale(.95)}}
+@keyframes meGlow{50%{filter:drop-shadow(0 0 55px rgba(255,40,10,.85))}}
+.stage .tagline,.stage .scroll{z-index:3}
+@media(max-width:820px){.me-img{right:50%;transform:translateX(50%);max-width:none;height:88%}.stage{height:min(560px,125vw)}.stage .tagline{left:12px;right:12px;bottom:12px;max-width:none;font-size:13px;padding:12px 14px}}
 /* motion */
 .r{opacity:0;transform:translateY(60px);transition:1s cubic-bezier(.2,.8,.2,1)}.r.in{opacity:1;transform:none}
 .cursor{position:fixed;width:14px;height:14px;border-radius:50%;background:var(--acc);pointer-events:none;z-index:99;mix-blend-mode:multiply;transform:translate(-50%,-50%);transition:width .25s,height .25s}
@@ -296,6 +304,7 @@ transform-origin:bottom right;transform:scale(.4) translateY(40px);opacity:0;poi
   </div>
   <div class="stage r">
     <canvas id="hero3d"></canvas>
+    <img src="img/sachin.webp" alt="Sachin Jangir" class="me-img" id="meImg">
     <div class="tagline">Design × Code × Motion — turning ideas into immersive, high-performance products.</div>
     <svg class="scroll" viewBox="0 0 100 100"><defs><path id="c" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><text fill="#fff" font-size="11" font-weight="600" letter-spacing="3"><textPath href="#c">SCROLL DOWN • SCROLL DOWN • </textPath></text><text x="50" y="56" fill="#ff3d1f" font-size="20" text-anchor="middle">↓</text></svg>
   </div>
@@ -452,6 +461,9 @@ document.querySelectorAll('.tilt').forEach(el=>{
 el.addEventListener('pointermove',e=>{const b=el.getBoundingClientRect(),x=(e.clientX-b.left)/b.width-.5,y=(e.clientY-b.top)/b.height-.5;
 el.style.transform=`perspective(900px) rotateY(${x*10}deg) rotateX(${-y*10}deg)`});
 el.addEventListener('pointerleave',()=>el.style.transform='')});
+// portrait parallax
+const meImg=document.getElementById('meImg');
+addEventListener('pointermove',e=>{if(innerWidth<=820)return;const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;meImg.style.transform=`translate(${-x*18}px,${-y*10}px)`});
 // cursor
 const cur=document.querySelector('.cursor');
 addEventListener('pointermove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px'});
@@ -596,7 +608,7 @@ S.add(new THREE.AmbientLight(0xffffff,.35));const l1=new THREE.PointLight(0xffb0
 const v=new THREE.Vector3();
 return t=>{const pa=core.geometry.attributes.position;for(let i=0;i<pa.count;i++){v.fromArray(base,i*3);const k=1+.12*Math.sin(v.x*2+t*1.6)*Math.cos(v.y*2+t*1.2);v.multiplyScalar(k);v.toArray(pa.array,i*3)}pa.needsUpdate=true;
 core.rotation.y=t*.2;wire.rotation.set(t*.1,-t*.15,0);rings.forEach((r,i)=>r.rotation.y=t*(.1+i*.05)*(i%2?-1:1));
-g.rotation.x+=(my*.6-g.rotation.x)*.05;g.rotation.y+=(mx*.8-g.rotation.y)*.05;g.position.x=innerWidth>820?1.8:0}});
+g.rotation.x+=(my*.6-g.rotation.x)*.05;g.rotation.y+=(mx*.8-g.rotation.y)*.05;g.position.x=innerWidth>820?-1.6:0;g.position.y=innerWidth>820?0:1.2}});
 // banner: flowing particle wave field
 scene('wave3d',(S,C)=>{C.position.set(0,2.2,6);C.lookAt(0,0,0);
 const W=140,H=60,n=W*H,p=new Float32Array(n*3),col=new Float32Array(n*3);
