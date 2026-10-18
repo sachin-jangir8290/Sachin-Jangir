@@ -204,6 +204,16 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:98;opa
 @keyframes lb{50%{transform:translate(-50%,-56%) rotate(-5deg) scale(1.05)}}
 .flogo{display:flex;align-items:center;justify-content:center;gap:2vw}
 .flogo-img{width:clamp(70px,14vw,200px);animation:bob 4s ease-in-out infinite}
+
+/* logo backgrounds */
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:url(img/bg-light.webp) center/cover no-repeat;opacity:.4;transform:scale(1.08);transform-origin:center;animation:drift 40s ease-in-out infinite alternate}
+@keyframes drift{to{transform:scale(1.18) translate(-2%,-2%)}}
+header{background:rgba(243,243,241,.7)}
+.icard,.svc:not(.hot):not(.dk),.rev,.ach div,.post,.badges span{background:rgba(255,255,255,.82);backdrop-filter:blur(8px)}
+.dark,footer,.hs .pin,.loader{background:linear-gradient(rgba(8,8,9,.72),rgba(8,8,9,.85)),url(img/bg-dark.webp) center/cover!important}
+.stage{background:linear-gradient(rgba(10,10,11,.45),rgba(10,10,11,.6)),url(img/bg-dark.webp) center/cover}
+.banner{background:linear-gradient(rgba(10,10,11,.6),rgba(10,10,11,.7)),url(img/bg-dark.webp) center/cover}
+.proj,.step:not(:nth-child(2n)),.cform input,.cform textarea,.cform select{background:rgba(18,18,20,.8);backdrop-filter:blur(6px)}
 /* motion */
 .r{opacity:0;transform:translateY(60px);transition:1s cubic-bezier(.2,.8,.2,1)}.r.in{opacity:1;transform:none}
 .cursor{position:fixed;width:14px;height:14px;border-radius:50%;background:var(--acc);pointer-events:none;z-index:99;mix-blend-mode:multiply;transform:translate(-50%,-50%);transition:width .25s,height .25s}
@@ -276,7 +286,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:98;opa
 </div></section>
 
 
-<section class="hs" id="process" style="padding:0"><div class="pin" style="background:var(--dark);color:#fff">
+<section class="hs" id="process" style="padding:0"><div class="pin" style="color:#fff">
   <div class="wrap" style="width:100%;margin-bottom:40px"><span class="label" style="color:#fff">How I work</span><h2 style="font-size:clamp(36px,6vw,80px);margin-top:14px">My <span class="acc">process</span></h2></div>
   <div class="track" id="track">
     <div class="step"><span class="k">01</span><div><h3>Discover</h3><p>Understanding goals, audience and requirements through research and conversation.</p></div></div>
