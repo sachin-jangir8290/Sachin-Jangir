@@ -308,7 +308,6 @@ filter:drop-shadow(0 0 30px rgba(255,40,10,.55));animation:meIn 1.4s .4s cubic-b
   </div>
   <div class="stage r">
     <canvas id="hero3d"></canvas>
-    <img src="img/sachin.webp" alt="Sachin Jangir" class="me-img" id="meImg">
     <div class="tagline">Design × Code × Motion — turning ideas into immersive, high-performance products.</div>
     <svg class="scroll" viewBox="0 0 100 100"><defs><path id="c" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><text fill="#0d0d0d" font-size="11" font-weight="600" letter-spacing="3"><textPath href="#c">SCROLL DOWN • SCROLL DOWN • </textPath></text><text x="50" y="56" fill="#ff3d1f" font-size="20" text-anchor="middle">↓</text></svg>
   </div>
@@ -465,9 +464,6 @@ document.querySelectorAll('.tilt').forEach(el=>{
 el.addEventListener('pointermove',e=>{const b=el.getBoundingClientRect(),x=(e.clientX-b.left)/b.width-.5,y=(e.clientY-b.top)/b.height-.5;
 el.style.transform=`perspective(900px) rotateY(${x*10}deg) rotateX(${-y*10}deg)`});
 el.addEventListener('pointerleave',()=>el.style.transform='')});
-// portrait parallax
-const meImg=document.getElementById('meImg');
-addEventListener('pointermove',e=>{if(innerWidth<=820)return;const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;meImg.style.transform=`translate(${-x*18}px,${-y*10}px)`});
 // cursor
 const cur=document.querySelector('.cursor');
 addEventListener('pointermove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px'});
@@ -612,7 +608,7 @@ S.add(new THREE.AmbientLight(0xffffff,.35));const l1=new THREE.PointLight(0xffb0
 const v=new THREE.Vector3();
 return t=>{const pa=core.geometry.attributes.position;for(let i=0;i<pa.count;i++){v.fromArray(base,i*3);const k=1+.12*Math.sin(v.x*2+t*1.6)*Math.cos(v.y*2+t*1.2);v.multiplyScalar(k);v.toArray(pa.array,i*3)}pa.needsUpdate=true;
 core.rotation.y=t*.2;wire.rotation.set(t*.1,-t*.15,0);rings.forEach((r,i)=>r.rotation.y=t*(.1+i*.05)*(i%2?-1:1));
-g.rotation.x+=(my*.6-g.rotation.x)*.05;g.rotation.y+=(mx*.8-g.rotation.y)*.05;g.position.x=innerWidth>820?-1.6:0;g.position.y=innerWidth>820?0:1.2}});
+g.rotation.x+=(my*.6-g.rotation.x)*.05;g.rotation.y+=(mx*.8-g.rotation.y)*.05;g.position.x=innerWidth>820?1.8:0}});
 // banner: flowing particle wave field
 scene('wave3d',(S,C)=>{C.position.set(0,2.2,6);C.lookAt(0,0,0);
 const W=140,H=60,n=W*H,p=new Float32Array(n*3),col=new Float32Array(n*3);
