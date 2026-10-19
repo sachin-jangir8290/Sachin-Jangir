@@ -5,7 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sachin Jangir — Portfolio</title>
 <link rel="icon" type="image/png" href="favicon.png">
-<meta name="description" content="Portfolio of Sachin Jangir — developer & creative technologist">
+<meta name="description" content="Sachin Jangir: frontend developer from India building fast, interactive and 3D web experiences with code, design and motion.">
+<meta name="author" content="Sachin Jangir">
+<meta name="theme-color" content="#ff3d1f">
+<link rel="canonical" href="https://sachin-jangir8290.github.io/Sachin-Jangir/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sachin Jangir: Frontend Developer">
+<meta property="og:description" content="Fast, interactive and 3D web experiences, crafted with code, design and motion.">
+<meta property="og:url" content="https://sachin-jangir8290.github.io/Sachin-Jangir/">
+<meta property="og:image" content="https://sachin-jangir8290.github.io/Sachin-Jangir/img/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sachin Jangir: Frontend Developer">
+<meta name="twitter:description" content="Fast, interactive and 3D web experiences, crafted with code, design and motion.">
+<meta name="twitter:image" content="https://sachin-jangir8290.github.io/Sachin-Jangir/img/og.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Sachin Jangir","jobTitle":"Frontend Developer","url":"https://sachin-jangir8290.github.io/Sachin-Jangir/","image":"https://sachin-jangir8290.github.io/Sachin-Jangir/logo.png","sameAs":["https://github.com/sachin-jangir8290"],"worksFor":{"@type":"Organization","name":"Bright Beans Digital","url":"https://www.brightbeansdigital.com/"},"address":{"@type":"PostalAddress","addressCountry":"IN"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -462,13 +476,15 @@ animation:chIn .9s cubic-bezier(.2,.9,.2,1) forwards,sh 4s linear infinite}
 @media(hover:none){.cursor{display:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.r{opacity:1;transform:none}.hero h1 span em,.split .ch{transform:none;opacity:1}}
 </style>
+<link rel="stylesheet" href="assets/extras.css">
 </head>
 <body>
 <div class="loader" id="loader"><i></i><img src="logo.png" alt="" class="llogo"><span>Sachin Jangir — Portfolio</span><b id="lc">0</b></div><div class="progress"></div><div class="cursor"></div>
 <!-- Content: replace placeholder details with your LinkedIn info -->
 <header><nav class="wrap">
   <a class="logo" href="#"><img src="logo.png" alt="Sachin Jangir logo" class="nlogo">Sachin.</a>
-  <div class="links"><a href="#about">About</a><a href="#services">Expertise</a><a href="#experience">Experience</a><a href="#work">Work</a><a href="#skills">Skills</a><a href="#faq">FAQ</a></div>
+  <div class="links"><a href="#about">About</a><a href="#services">Expertise</a><a href="#experience">Experience</a><a href="#work">Work</a><a href="#skills">Skills</a><a href="#lab">Lab</a><a href="#faq">FAQ</a></div>
+  <div class="tools"><button id="langBtn" type="button" aria-label="Switch language">हि</button><button id="soundBtn" type="button" aria-label="Toggle sound">🔇</button><button id="themeBtn" type="button" aria-label="Toggle theme">🌙</button></div>
   <a class="pill" href="#contact">Say hi <i>→</i></a>
 </nav></header>
 
@@ -513,7 +529,7 @@ animation:chIn .9s cubic-bezier(.2,.9,.2,1) forwards,sh 4s linear infinite}
   <span class="label r">About me</span>
   <h2 id="reveal-text" style="margin-top:20px">I turn complex problems into simple, elegant solutions — blending clean code, thoughtful design and smooth motion to create products people love to use.</h2>
   <div class="intro-grid">
-    <div class="r"><div class="big">04<span class="acc">+</span></div><p style="color:var(--mute);margin-top:12px">Years of learning, building & shipping</p></div>
+    <div class="r"><div class="big" data-parallax="-.12">04<span class="acc">+</span></div><p style="color:var(--mute);margin-top:12px">Years of learning, building & shipping</p></div>
     <div class="icard r"><h3>Who I am</h3><p>A curious developer from India who loves the intersection of engineering and creativity. Replace this with your LinkedIn “About”.</p><div class="badges"><span>📍 India</span><span>🎓 Graduate</span><span>💻 Frontend Dev</span></div></div>
     <div class="icard r"><h3>What I do</h3><p>Frontend development, interactive 3D web, UI/UX and full-stack apps that are fast, accessible and delightful.</p></div>
   </div>
@@ -524,6 +540,7 @@ animation:chIn .9s cubic-bezier(.2,.9,.2,1) forwards,sh 4s linear infinite}
 <section id="experience" style="padding-top:20px"><div class="wrap">
   <span class="label r">Experience</span>
   <h2 class="r" style="font-size:clamp(36px,6vw,80px);margin-top:16px">My journey <span class="acc">so far</span></h2>
+  <div class="now-card"><div class="now-logo" aria-hidden="true">BB</div><div><small>Currently at</small><h3>Bright Beans Digital</h3><p>Frontend Developer, building modern, fast and interactive web experiences.</p></div><a class="go" href="https://www.brightbeansdigital.com/" target="_blank" rel="noopener" aria-label="Visit Bright Beans Digital">↗</a></div>
   <div class="tl" id="tl"><div class="fill"></div>
     <div class="job r"><span class="when">2025 — Present</span><div><h3>Frontend Developer</h3><h4><a href="https://www.brightbeansdigital.com/" target="_blank" rel="noopener" style="color:var(--acc);font-weight:600">Bright Beans Digital</a> · Full-time</h4><p>Building responsive, high-performance interfaces and interactive 3D experiences. Improved page speed and user engagement across key products.</p></div></div>
     <div class="job r"><span class="when">2024 — 2025</span><div><h3>Web Developer Intern</h3><h4>Company Name · Internship</h4><p>Developed landing pages and reusable UI components, collaborated with designers and shipped features used by real customers.</p></div></div>
@@ -531,7 +548,7 @@ animation:chIn .9s cubic-bezier(.2,.9,.2,1) forwards,sh 4s linear infinite}
   </div>
 </div></section>
 <section id="services" style="padding-top:20px"><div class="wrap">
-  <div class="giant r">expertise</div>
+  <div class="giant r" data-parallax="0" data-parallax-x="-.25">expertise</div>
   <div class="svc-grid">
     <div class="svc tilt r"><div><span class="n">01</span><h3>Web Development</h3><p>Responsive, high-performance websites and web apps built with modern frameworks.</p></div><ul><li>HTML/CSS</li><li>JavaScript</li><li>React</li></ul></div>
     <div class="svc hot tilt r"><div><span class="n">02</span><h3>3D & Motion</h3><p>Immersive 3D scenes, scroll-driven animations and micro-interactions that wow.</p></div><ul><li>Three.js</li><li>GSAP</li><li>WebGL</li></ul></div>
@@ -540,7 +557,7 @@ animation:chIn .9s cubic-bezier(.2,.9,.2,1) forwards,sh 4s linear infinite}
 </div></section>
 
 <section class="dark" id="work"><div class="wrap">
-  <div class="work-head"><h2 class="r">See the impact of my <span class="acc">recent work</span></h2><p class="sub r" style="max-width:340px">Selected projects — replace with your own projects, links and descriptions.</p></div>
+  <div class="work-head"><h2 class="r">See the impact of my <span class="acc">recent work</span></h2><p class="sub r" style="max-width:340px">Selected projects. Tap any card to see the details.</p></div>
   <div class="work-grid">
     <a class="proj tilt r" href="#"><div class="thumb"><div class="t1" style="background:url(img/project-1.webp) center/cover"></div></div><div class="meta"><div><small>Web App · 2026</small><h3>Project One</h3></div><span class="arrow">→</span></div></a>
     <a class="proj tilt r" href="#"><div class="thumb"><div class="t2" style="background:url(img/project-2.webp) center/cover"></div></div><div class="meta"><div><small>3D Website · 2025</small><h3>Project Two</h3></div><span class="arrow">→</span></div></a>
@@ -550,6 +567,11 @@ animation:chIn .9s cubic-bezier(.2,.9,.2,1) forwards,sh 4s linear infinite}
 </div></section>
 
 
+
+<section id="github"><div class="wrap">
+  <div class="xhead"><div><span class="label r">GitHub</span><h2 class="r">Code, <span class="acc">live</span></h2></div><p class="r">Live stats straight from my GitHub profile: repos, languages and contributions.</p></div>
+  <div class="gh-grid" id="ghGrid"><p class="gh-err">Loading GitHub stats…</p></div>
+</div></section>
 <section class="hs" id="process" style="padding:0"><div class="pin" style="color:#fff">
   <div class="pr-bg" aria-hidden="true">PROCESS</div>
   <div class="wrap pr-head" style="width:100%;margin:0 auto 40px"><div><span class="label" style="color:#fff">How I work</span><h2 style="font-size:clamp(36px,6vw,80px);margin-top:14px">My <span class="acc">process</span></h2></div>
@@ -620,6 +642,32 @@ animation:chIn .9s cubic-bezier(.2,.9,.2,1) forwards,sh 4s linear infinite}
     <div class="r"><b>🌟</b><h3>Open source</h3><p>Contributions to open-source projects.</p></div>
   </div>
 </div></section>
+
+<section id="lab"><div class="wrap">
+  <div class="xhead"><div><span class="label r">Lab</span><h2 class="r">Small <span class="acc">experiments</span></h2></div><p class="r">A playground of tiny interactive UI experiments. Hover, tap and play.</p></div>
+  <div class="lab-grid">
+    <figure class="lab-tile"><div class="blob"></div><figcaption><b>Morphing blob</b> · CSS</figcaption></figure>
+    <figure class="lab-tile"><button class="ripple-btn" type="button">Click me ✦</button><figcaption><b>Ripple button</b> · JS</figcaption></figure>
+    <figure class="lab-tile"><div class="flip"><div><span>Hover me</span><span><img src="logo.png" alt=""></span></div></div><figcaption><b>3D flip card</b> · CSS 3D</figcaption></figure>
+    <figure class="lab-tile lab-dark"><div class="orbit-ld"><i></i><i></i><i></i></div><figcaption><b>Orbit loader</b> · CSS</figcaption></figure>
+    <figure class="lab-tile lab-dark"><div class="glitch" data-t="SACHIN">SACHIN</div><figcaption><b>Glitch text</b> · CSS</figcaption></figure>
+    <figure class="lab-tile lab-dark"><div class="spot-txt">MOVE<br>HERE</div><figcaption><b>Spotlight text</b> · JS</figcaption></figure>
+  </div>
+</div></section>
+
+<section id="terminal" style="padding-top:0"><div class="wrap">
+  <div class="xhead"><div><span class="label r">Terminal</span><h2 class="r">Try the <span class="acc">terminal</span></h2></div><p class="r">Prefer the command line? Explore my portfolio by typing commands. Start with <b>help</b>.</p></div>
+  <div class="term r"><div class="term-bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span>visitor@sachin: ~</span></div>
+    <div class="term-out" id="termOut" aria-live="polite"></div>
+    <div class="term-in"><label for="termIn">visitor@sachin:~$</label><input id="termIn" autocomplete="off" spellcheck="false" placeholder="type help..." aria-label="Terminal command"></div></div>
+  <div class="term-hints r"><button type="button">help</button><button type="button">about</button><button type="button">skills</button><button type="button">projects</button><button type="button">contact</button><button type="button">ghost</button></div>
+</div></section>
+
+<section id="game" style="padding-top:0"><div class="wrap">
+  <div class="xhead"><div><span class="label r">Take a break</span><h2 class="r">Ghost <span class="acc">Run</span></h2></div><p class="r">Help Ghosty dodge the bugs 🐞 and grab the code { }. Tap or press Space to jump.</p></div>
+  <div class="game r"><canvas id="gameCv" aria-label="Ghost Run game"></canvas><div class="game-hud"><div><span>SCORE</span> <b id="gScore">0</b></div><div><span>BEST</span> <b id="gBest">0</b></div></div>
+    <div class="game-ui" id="gameUi"><h3>Ghost Run 👻</h3><p>Tap / click / Space to jump</p><button class="pill" type="button" onclick="event.stopPropagation()">Start game <i>▶</i></button></div></div>
+</div></section>
 <section class="dark" id="faq"><div class="wrap faq">
   <div><span class="label r">FAQ</span><h2 class="r" style="margin-top:18px">A few things <span class="acc">about me</span></h2></div>
   <div>
@@ -639,6 +687,15 @@ animation:chIn .9s cubic-bezier(.2,.9,.2,1) forwards,sh 4s linear infinite}
   </div>
 </div></section>
 
+
+<section id="blog" style="padding-top:0"><div class="wrap">
+  <div class="xhead"><div><span class="label r">Blog</span><h2 class="r">Notes &amp; <span class="acc">ideas</span></h2></div><p class="r">Things I'm learning and writing about. New posts coming soon.</p></div>
+  <div class="bl-grid">
+    <article class="bl"><span class="tag">Three.js</span><h3>Making 3D websites feel fast on mobile</h3><p>Tricks for keeping WebGL scenes smooth: pixel ratio, pausing off-screen, and lighter geometry.</p><small><span>Coming soon</span><span>5 min read</span></small></article>
+    <article class="bl"><span class="tag">CSS</span><h3>Micro-interactions that make UI feel alive</h3><p>Small hover, press and scroll details that turn a good interface into a delightful one.</p><small><span>Coming soon</span><span>4 min read</span></small></article>
+    <article class="bl"><span class="tag">Workflow</span><h3>My frontend toolkit</h3><p>The editors, libraries and habits I use every day to ship clean, maintainable code.</p><small><span>Coming soon</span><span>3 min read</span></small></article>
+  </div>
+</div></section>
 <footer id="contact"><div class="wrap">
   <h2 class="r">Want to connect? Let's say <span class="acc">hello.</span></h2>
   <form class="cform r" id="cform"><input name="n" placeholder="Your name" required><input name="e" type="email" placeholder="Your email" required>
@@ -860,5 +917,6 @@ const pts=new THREE.Points(geo,new THREE.PointsMaterial({size:.05,vertexColors:t
 return t=>{for(let k=0;k<n*3;k+=3){const x=p[k],z=p[k+2];p[k+1]=Math.sin(x*.6+t*1.2)*.5+Math.cos(z*.9+t*.8)*.35+Math.sin((x+z)*.3+t)*.3}geo.attributes.position.needsUpdate=true;
 pts.rotation.y=Math.sin(t*.2)*.15+mx*.3}});
 </script>
+<script src="assets/extras.js" defer></script>
 </body>
 </html>
