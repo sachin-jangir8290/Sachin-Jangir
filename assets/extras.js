@@ -27,34 +27,6 @@ soundBtn.onclick=()=>{soundOn=!soundOn;store.set('sound',soundOn?'1':'0');paintS
 let lastTick=0;document.addEventListener('pointerover',e=>{if(e.target.closest('a,button')&&performance.now()-lastTick>90){lastTick=performance.now();sfx('tick')}});
 document.addEventListener('click',e=>{if(e.target.closest('a,button'))sfx('pop')});
 
-/* ---------- language (EN / Hindi) ---------- */
-const HI=[
- ['.links a[href="#about"]','परिचय'],['.links a[href="#services"]','विशेषज्ञता'],['.links a[href="#experience"]','अनुभव'],['.links a[href="#work"]','काम'],
- ['.links a[href="#skills"]','स्किल्स'],['.links a[href="#lab"]','लैब'],['.links a[href="#faq"]','सवाल'],
- ['nav > .pill','नमस्ते <i>→</i>'],
- ['.mini > p','फ्रंटएंड डेवलपर — तेज़, इंटरैक्टिव और 3D वेब अनुभव बनाता हूँ।'],['.mini-now > span','अभी बना रहा हूँ'],['.mini .pill','मेरा सफ़र <i>→</i>'],
- ['.hbtns .pill:not(.ghost)','मेरा काम देखें <i>↓</i>'],['.hbtns .pill.ghost','संपर्क करें <i>→</i>'],
- ['#about .label','मेरे बारे में'],['#about .icard:nth-of-type(1) h3','मैं कौन हूँ'],['#about .icard h3:not(:first-child)',null],
- ['#experience .label','अनुभव'],['#experience h2','मेरा अब तक का <span class="acc">सफ़र</span>'],
- ['.work-head h2','मेरे हाल के <span class="acc">काम</span>'],['.work-head p','चुने हुए प्रोजेक्ट्स — किसी भी कार्ड पर टैप करें।'],
- ['#process .label','मैं कैसे काम करता हूँ'],['.pr-head h2','मेरी <span class="acc">प्रक्रिया</span>'],['.pr-intro','पाँच आसान स्टेप्स जिनसे आइडिया एक बेहतरीन प्रोडक्ट बनता है। <span>स्क्रॉल करें ↓</span>'],
- ['#github .label','गिटहब'],['#github h2','कोड, <span class="acc">लाइव</span>'],
- ['#skills .label','स्किल्स'],['#skills h2','मेरा <span class="acc">टेक स्टैक</span>'],
- ['#lab .label','लैब'],['#lab h2','छोटे <span class="acc">प्रयोग</span>'],
- ['#terminal .label','टर्मिनल'],['#terminal h2','इसे <span class="acc">आज़माएँ</span>'],
- ['#game .label','ब्रेक लें'],['#game h2','घोस्ट <span class="acc">रन</span>'],
- ['#faq .label','सवाल-जवाब'],['#faq h2','मेरे बारे में <span class="acc">कुछ बातें</span>'],
- ['#blog .label','ब्लॉग'],['#blog h2','नोट्स और <span class="acc">विचार</span>'],
- ['footer h2','जुड़ना चाहते हैं? <span class="acc">नमस्ते</span> कहिए।'],['#cform button','संदेश भेजें <i>→</i>'],
-];
-let lang='en';const langBtn=$('#langBtn');const orig=new Map();
-function setLang(l){lang=l;HI.forEach(([sel,hi])=>{if(!hi)return;$$(sel).forEach(el=>{if(!orig.has(el))orig.set(el,el.innerHTML);el.innerHTML=l=='hi'?hi:orig.get(el)})});
- const ph={n:['Your name','आपका नाम'],e:['Your email','आपका ईमेल'],m:['Write your message...','अपना संदेश लिखें...']};
- Object.entries(ph).forEach(([k,v])=>{const f=$('#cform [name='+k+']');if(f)f.placeholder=v[l=='hi'?1:0]});
- document.documentElement.lang=l=='hi'?'hi':'en';langBtn.textContent=l=='hi'?'EN':'हि';langBtn.title=l=='hi'?'English':'हिंदी';store.set('lang',l)}
-langBtn.onclick=()=>{setLang(lang=='en'?'hi':'en');toast(lang=='hi'?'भाषा: हिंदी 🇮🇳':'Language: English')};
-if(store.get('lang')=='hi')setLang('hi');
-
 /* ---------- project modal ---------- */
 const PROJECTS=[
  {img:'img/project-1.webp',type:'Web App · 2026',title:'Project One',desc:'A fast analytics web app with real-time charts, clean dashboards and smooth micro-interactions. Replace this text with the real story: the problem, your solution and the result.',role:'Frontend Developer',tech:['React','Chart.js','Tailwind','REST API'],link:'#'},
